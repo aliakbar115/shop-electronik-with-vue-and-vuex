@@ -32,7 +32,6 @@ const actions = {
   GetMostSellProductsFromServer(context) {
     Vue.http.get("product/mostSellProducts")
       .then(response => {
-        console.log(response);
         return response.json();
       }).then(data => {
         context.commit("SetMostSellProducts", data);
