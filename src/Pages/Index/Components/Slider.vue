@@ -56,7 +56,9 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("GetSlidersFromServer");  // dispatch   استفاده می شود action متدی است که برای فراخوانی فانکشن های موجود در
+    if (this.Sliders.length==0) { // 38m3    می آورد و از سرور نمی گیرد  state برای این است که هر بار کوئری نزند و اطلاعات را نگیرد به طور مثال وقتی بین خانه و درباره ما سوییچ می کنیم دیتا را دیگر از
+      this.$store.dispatch("GetSlidersFromServer");  // dispatch   استفاده می شود action متدی است که برای فراخوانی فانکشن های موجود در
+    }
   },
 };
 </script>

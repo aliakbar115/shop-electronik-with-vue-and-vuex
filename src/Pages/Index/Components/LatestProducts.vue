@@ -47,7 +47,9 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("GetLatestProductsFromServer");
+    if (this.LatestProducts.length==0) { //38m3
+      this.$store.dispatch("GetLatestProductsFromServer");
+    }
   }
 };
 </script>

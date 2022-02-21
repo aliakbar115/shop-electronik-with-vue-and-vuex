@@ -35,7 +35,9 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("GetMostSellProductsFromServer");
+    if (this.MostSellProducts.length==0) { // 38m3
+      this.$store.dispatch("GetMostSellProductsFromServer");
+    }
   }
 };
 </script>

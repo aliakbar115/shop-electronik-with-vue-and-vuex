@@ -121,14 +121,7 @@
                   <router-link active-class="active" exact to="/">خانه</router-link>  <!-- exact   دقیقا همین مسیر فعال شود -->
                 </li>
                 <li class="dropdown">
-                  <a href="#">فروشگـاه<i class="fa fa-angle-down"></i></a>
-                  <ul role="menu" class="sub-menu">
-                    <li><a href="shop.html">محصولات</a></li>
-                    <li><a href="product-details.html">جزئیات محصولات</a></li>
-                    <li><a href="checkout.html">پرداخت</a></li>
-                    <li><a href="cart.html">سبـد خریـد</a></li>
-                    <li><a href="login.html">ورود</a></li>
-                  </ul>
+                  <router-link active-class="active" to="/Products"> محصولات</router-link>
                 </li>
                 <li class="dropdown">
                   <a href="#">اخبـار<i class="fa fa-angle-down"></i></a>

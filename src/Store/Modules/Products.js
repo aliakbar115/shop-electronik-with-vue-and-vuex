@@ -3,7 +3,12 @@ import Vue from 'vue';
 const state = {
   MostSellProducts: [],  // پرفروشترین محصولات
   LatestProducts: [],
-  ProductImageAddress:"http://localhost:8000/images/"
+  ProductImageAddress:"http://localhost:8000/images/",
+  Products: {}, // در لاراول استفاده کردیم یک آبجکت می گیریم paginate چون به صورت
+
+
+
+
 };
 
 
@@ -16,7 +21,13 @@ const getters = {
   },
   GetProductImageAddress(state){
     return state.ProductImageAddress;
-  }
+  },
+  GetProducts(state) {
+    return state.Products;
+  },
+
+
+
 };
 
 const mutations = {
@@ -25,7 +36,10 @@ const mutations = {
   },
   SetLatestProducts(state, LatestProducts) {
     state.LatestProducts = LatestProducts;
-  }
+  },
+  SetProducts(state, products) {
+    state.Products = products;
+  },
 };
 
 const actions = {
@@ -44,7 +58,21 @@ const actions = {
       }).then(data => {
         context.commit("SetLatestProducts", data);
       });
-  }
+  },
+  GetProductsFromServer(context, Filter) {
+    Vue.http.get("product/GetProducts",{
+      params:{
+        page:Filter.page
+      }
+    })
+      .then(response => {
+        return response.json();
+      }).then(data => {
+        console.log(data);
+        context.commit("SetProducts", data);
+      });
+  },
+
 };
 
 export default {
