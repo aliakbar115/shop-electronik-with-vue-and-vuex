@@ -13,7 +13,13 @@ Vue.http.options.root = "http://localhost:8000/api/";
 
 const router = new VueRouter({
   routes : Routes,
-  mode : 'history'  // # برای اینکه نباشد
+  mode : 'history',  // # برای اینکه نباشد
+  scrollBehavior() { //38m47  برای اینکه وقتی هر صفحه لود می شود از بالای صفحه بیاورد رفتار اسکرول را کنترل می کند
+    return {
+      x: 0,
+      y: 0
+    };
+  }
 });
 
 

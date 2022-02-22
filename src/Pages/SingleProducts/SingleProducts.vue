@@ -1,0 +1,75 @@
+<template>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 padding-right">
+          <div class="product-details">
+
+            <div class="col-sm-5">
+              <div class="view-product">
+                <img :src="ProductImageAddress+SingleProduct.productImageName">
+              </div>
+            </div>
+            <div class="col-sm-7">
+              <div class="product-information">
+                <div>
+                  <h2>کـالای شمـاره {{SingleProduct.id}}</h2>
+                  <p>نام محصول : {{SingleProduct.productName}}</p>
+                </div>
+                <div>
+                  <span>
+                    <span>قیمت : {{SingleProduct.price}} تومان</span>
+                  </span>
+                  <span>
+                    <label>تعداد :</label>
+                    <input type="text" value="3" class="search_box">
+                    <button type="button" class="btn btn-fefault cart">
+                      <i class="fa fa-shopping-cart"></i>
+                      افـزودن به سبـد خریـد
+                    </button>
+                  </span>
+                </div>
+                <div>
+                  <p>{{SingleProduct.description}}</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- قسمت محصولات پیشنهادی -->
+           <suggested-products></suggested-products>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+ import SuggestedProducts from "./Components/SuggestedProducts";
+export default {
+  computed: {
+    SingleProduct() {
+      return this.$store.getters.GetSingleProduct;
+    },
+    ProductImageAddress() {
+      return this.$store.getters.GetProductImageAddress;
+    }
+  },
+  watch: {
+    $route() {
+      this.$store.dispatch("GetSingleProductFromServer", {
+        productId: this.$route.params.id
+      });
+    }
+  },
+  components: {
+    suggestedProducts: SuggestedProducts
+  },
+  created() {
+
+    this.$store.dispatch("GetSingleProductFromServer", {
+      productId: this.$route.params.id   // give from url
+    });
+  }
+};
+</script>

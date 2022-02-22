@@ -10,9 +10,9 @@
         <div class="product-image-wrapper">
           <div class="single-products">
             <div class="productinfo text-center">
-              <a href="/">
+              <router-link :to="{name:'SingleProduct',params:{id:product.id}}">
                 <img :src="ProductImageAddress+product.productImageName" width="253" height="202">
-              </a>
+              </router-link>
               <h2>{{ product.price }}</h2>
               <p>{{ product.productName.substring(0,30) }}</p>
             </div>
@@ -20,9 +20,9 @@
           <div class="choose">
             <ul class="nav nav-pills nav-justified">
               <li>
-                <a href="#">
+                <router-link :to="{name:'SingleProduct',params:{id:product.id}}">
                   <i class="fa fa-eye"></i>مشاهده
-                </a>
+                </router-link>
               </li>
               <li>
                 <a href="#">

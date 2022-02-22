@@ -8,9 +8,9 @@
         <div class="product-image-wrapper">
           <div class="single-products">
             <div class="productinfo text-center">
-              <a href="/">
+              <router-link :to="{name:'SingleProduct',params:{id:product.id}}">
                 <img :src="ProductImageAddress+product.productImageName" width="253" height="202">
-              </a>
+              </router-link>
               <h2>{{ product.price }}</h2>
               <p>{{ product.productName.substring(0,30) }}</p>
               <a href="#" class="btn btn-default add-to-cart">

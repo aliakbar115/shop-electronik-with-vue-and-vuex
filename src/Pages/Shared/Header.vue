@@ -57,9 +57,9 @@
 
           <div class="col-sm-4" style="text-align: left;">
             <div class="logo">
-              <a href="index.html"
+              <a href="/index.html"
                 ><img
-                  src="images/home/logo.png"
+                  src="/src/assets/images/home/logo.png"
                   alt="Logo"
                   style="text-align: center;"
               /></a>
@@ -76,7 +76,7 @@
                   <a href="#"><i class="fa fa-star"></i> لیست علاقه مندی ها</a>
                 </li>
                 <li>
-                  <a href="login.html"><i class="fa fa-lock"></i> ورود</a>
+                  <a href="/login.html"><i class="fa fa-lock"></i> ورود</a>
                 </li>
                 <li>
                   <a href="cart.html"
@@ -126,8 +126,8 @@
                 <li class="dropdown">
                   <a href="#">اخبـار<i class="fa fa-angle-down"></i></a>
                   <ul role="menu" class="sub-menu">
-                    <li><a href="blog.html">آخریـن اخبـار</a></li>
-                    <li><a href="blog-single.html">صفحـه خبـر</a></li>
+                    <li><a href="/blog.html">آخریـن اخبـار</a></li>
+                    <li><a href="/blog-single.html">صفحـه خبـر</a></li>
                   </ul>
                 </li>
                 <li>

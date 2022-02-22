@@ -5,10 +5,8 @@ const state = {
   LatestProducts: [],
   ProductImageAddress:"http://localhost:8000/images/",
   Products: {}, // در لاراول استفاده کردیم یک آبجکت می گیریم paginate چون به صورت
-
-
-
-
+  SingleProduct: {},
+  SuggestedProducts: []
 };
 
 
@@ -25,8 +23,12 @@ const getters = {
   GetProducts(state) {
     return state.Products;
   },
-
-
+  GetSingleProduct(state) {
+    return state.SingleProduct;
+  },
+  GetSuggestedProducts(state) {
+    return state.SuggestedProducts;
+  }
 
 };
 
@@ -40,6 +42,12 @@ const mutations = {
   SetProducts(state, products) {
     state.Products = products;
   },
+  SetSingleProduct(state, singleProduct) {
+    state.SingleProduct = singleProduct;
+  },
+  SetSuggestedProducts(state, suggestedProducts) {
+    state.SuggestedProducts = suggestedProducts;
+  }
 };
 
 const actions = {
@@ -59,7 +67,7 @@ const actions = {
         context.commit("SetLatestProducts", data);
       });
   },
-  GetProductsFromServer(context, Filter) {
+  GetProductsFromServer(context, Filter) {   // Filter    حاوی شماره صفحه برای صفحه بندی
     Vue.http.get("product/GetProducts",{
       params:{
         page:Filter.page
@@ -68,10 +76,25 @@ const actions = {
       .then(response => {
         return response.json();
       }).then(data => {
-        console.log(data);
         context.commit("SetProducts", data);
       });
   },
+  GetSingleProductFromServer(context, Filter) {  // Filter  یک آبجکت حاوی آیدی محصول است که از روت گرفتیم تا بتوانیم از سرور اطلاعات را بگیریم
+    Vue.http.get("product/ShowProduct/" + Filter.productId)
+      .then(response => {
+        return response.json();
+      }).then(data => {
+        context.commit("SetSingleProduct", data);
+      });
+  },
+  GetSuggestedProductsFromServer(context) {
+    Vue.http.get("product/SuggestedProducts")
+      .then(response => {
+        return response.json();
+      }).then(data => {
+        context.commit("SetSuggestedProducts", data);
+      });
+  }
 
 };
 

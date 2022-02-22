@@ -5,12 +5,12 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="address">
-              <img src="src/assets/images/home/map.png" alt />
+              <img src="/src/assets/images/home/map.png" alt />
             </div>
           </div>
           <div class="col-sm-3">
             <div class="address">
-              <img src="src/assets/images/home/map.png" alt />
+              <img src="/src/assets/images/home/map.png" alt />
             </div>
           </div>
           <div class="col-sm-6">

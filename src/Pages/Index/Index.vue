@@ -15,10 +15,6 @@ export default {
   data() {
     return {};
   },
-
-  mounted() {},
-
-  methods: {},
   components: {
     "app-slider": Slider,
     mostSell:MostSellProducts,

@@ -4,18 +4,13 @@
       <div class="row">
         <div class="col-sm-12 padding-right">
           <div class="features_items">
-            <div
-              class="col-sm-3"
-              v-for="product in FilterProducts.data"
-              :key="product.id"
-            >
+            <div class="col-sm-3" v-for="product in FilterProducts.data" :key="product.id" >
               <div class="product-image-wrapper">
                 <div class="single-products">
                   <div class="productinfo text-center">
-                    <a href="/">
-                      <img :src="ProductImageAddress + product.productImageName" width="253" height="202"
-                      />
-                    </a>
+                    <router-link :to="{name:'SingleProduct',params:{id:product.id}}">
+                      <img :src="ProductImageAddress + product.productImageName" width="253" height="202"/>
+                    </router-link>
                     <h2>{{ product.price }}</h2>
                     <p>{{ product.productName.substring(0, 30) }}</p>
                   </div>
@@ -23,7 +18,9 @@
                 <div class="choose">
                   <ul class="nav nav-pills nav-justified">
                     <li>
-                      <a href="#"> <i class="fa fa-eye"></i>مشاهده </a>
+                      <router-link :to="{name: 'SingleProduct', params: { id: product.id }}">
+                        <i class="fa fa-eye"></i>مشاهده
+                      </router-link>
                     </li>
                     <li>
                       <a href="#">
