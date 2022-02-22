@@ -69,14 +69,17 @@
           <div class="col-sm-8 header-middle-menu">
             <div class="shop-menu pull-right">
               <ul class="nav navbar-nav">
-                <li>
+                <!-- <li>
                   <a href="#"><i class="fa fa-user"></i> حساب کاربـری</a>
                 </li>
                 <li>
                   <a href="#"><i class="fa fa-star"></i> لیست علاقه مندی ها</a>
+                </li> -->
+                <li>
+                  <router-link to="/Login" active-class="active"><i class="fa fa-lock"></i> ورود</router-link>
                 </li>
                 <li>
-                  <a href="/login.html"><i class="fa fa-lock"></i> ورود</a>
+                  <router-link to="/Register" active-class="active"><i class="fa fa-user"></i> ثبت نام</router-link>
                 </li>
                 <li>
                   <a href="cart.html"
