@@ -68,23 +68,20 @@
 
           <div class="col-sm-8 header-middle-menu">
             <div class="shop-menu pull-right">
-              <ul class="nav navbar-nav">
-                <!-- <li>
-                  <a href="#"><i class="fa fa-user"></i> حساب کاربـری</a>
+              <ul class="nav navbar-nav" v-if="!IsUserAuthenticated">
+                <li>
+                  <router-link to="/Login" active-class="active"> <i class="fa fa-lock"></i> ورود</router-link>
                 </li>
                 <li>
-                  <a href="#"><i class="fa fa-star"></i> لیست علاقه مندی ها</a>
-                </li> -->
+                  <router-link to="/Register" active-class="active"> <i class="fa fa-user"></i> ثبت نام</router-link>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav" v-else>
                 <li>
-                  <router-link to="/Login" active-class="active"><i class="fa fa-lock"></i> ورود</router-link>
+                  <a> <i class="fa fa-user"></i> {{ UserFullName }} عزیز ، خوش آمدید</a>
                 </li>
                 <li>
-                  <router-link to="/Register" active-class="active"><i class="fa fa-user"></i> ثبت نام</router-link>
-                </li>
-                <li>
-                  <a href="cart.html"
-                    ><i class="fa fa-shopping-cart"></i> سبد خریـد</a
-                  >
+                  <a style="cursor:pointer" @click="SignOutUser()"> <i class="fa fa-lock"></i> خروج</a>
                 </li>
               </ul>
             </div>
@@ -147,3 +144,27 @@
   </header>
   <!--/header-->
 </template>
+
+<script>
+export default {
+  computed: {
+    IsUserAuthenticated() {
+      return this.$store.getters.IsUserAuthenticated;
+    },
+    UserFullName() {
+      return this.$store.getters.GetUserFullName;
+    }
+  },
+  methods: {
+    CheckForLogin() { // بعد رفرش از بین می رود باید لاگین بررسی شود state چون
+      this.$store.dispatch("CheckForLogin");
+    },
+    SignOutUser() {
+      this.$store.dispatch("SignOutUser");
+    }
+  },
+  created() {
+    this.CheckForLogin();
+  }
+};
+</script>
