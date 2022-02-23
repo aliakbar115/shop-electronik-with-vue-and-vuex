@@ -4,7 +4,7 @@ import Products from './Pages/Products/Products.vue';
 import SingleProduct from './Pages/SingleProducts/SingleProducts.vue'
 import Login from './Pages/Account/Login.vue'
 import Register from './Pages/Account/Register.vue'
-
+import UserShopCart from './Pages/ShopCarts/UserShopCart.vue'
 
 export const Routes = [
   {
@@ -32,5 +32,9 @@ export const Routes = [
   {
     path: '/Register',
     component: Register
+  },
+  {
+    path: '/ShopCart',
+    component: UserShopCart
   }
 ];

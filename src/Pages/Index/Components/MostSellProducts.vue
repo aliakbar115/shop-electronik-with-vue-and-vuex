@@ -13,7 +13,7 @@
               </router-link>
               <h2>{{ product.price }}</h2>
               <p>{{ product.productName.substring(0,30) }}</p>
-              <a href="#" class="btn btn-default add-to-cart">
+              <a href="#" class="btn btn-default add-to-cart"  @click="AddProductToOrder(product.id)">
                 <i class="fa fa-shopping-cart"></i>افزودن به سبـد خرید
               </a>
             </div>
@@ -37,6 +37,16 @@ export default {
   created() {
     if (this.MostSellProducts.length==0) { // 38m3
       this.$store.dispatch("GetMostSellProductsFromServer");
+    }
+  },
+  methods: {
+    AddProductToOrder(productId) {
+      const orderDetail = {
+        productId: productId,
+        count: 1
+      };
+
+      this.$store.dispatch("AddProductToOrder", orderDetail);
     }
   }
 };

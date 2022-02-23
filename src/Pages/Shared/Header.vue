@@ -57,8 +57,8 @@
 
           <div class="col-sm-4" style="text-align: left;">
             <div class="logo">
-              <a href="/index.html"
-                ><img
+              <a href="/index.html">
+                <img
                   src="/src/assets/images/home/logo.png"
                   alt="Logo"
                   style="text-align: center;"
@@ -123,17 +123,13 @@
                 <li class="dropdown">
                   <router-link active-class="active" to="/Products"> محصولات</router-link>
                 </li>
-                <li class="dropdown">
-                  <a href="#">اخبـار<i class="fa fa-angle-down"></i></a>
-                  <ul role="menu" class="sub-menu">
-                    <li><a href="/blog.html">آخریـن اخبـار</a></li>
-                    <li><a href="/blog-single.html">صفحـه خبـر</a></li>
-                  </ul>
-                </li>
+
                 <li>
                   <router-link active-class="active" to="/AboutUs">درباره مـا</router-link>
                 </li>
-                <li><a href="contact-us.html">تماس با مـا</a></li>
+                <li v-if="IsUserAuthenticated">
+                  <router-link to="/ShopCart" active-class="active">سبد خرید</router-link>
+                </li>
               </ul>
             </div>
           </div>

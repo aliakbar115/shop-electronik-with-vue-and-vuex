@@ -22,8 +22,8 @@
                   </span>
                   <span>
                     <label>تعداد :</label>
-                    <input type="text" value="3" class="search_box">
-                    <button type="button" class="btn btn-fefault cart">
+                    <input type="text" value="3" class="search_box" v-model="count">
+                    <button type="button" class="btn btn-fefault cart" @click.prevent="AddProductToOrder(SingleProduct.id)">
                       <i class="fa fa-shopping-cart"></i>
                       افـزودن به سبـد خریـد
                     </button>
@@ -47,6 +47,11 @@
 <script>
  import SuggestedProducts from "./Components/SuggestedProducts";
 export default {
+   data() {
+    return {
+      count: 1
+    };
+  },
   computed: {
     SingleProduct() {
       return this.$store.getters.GetSingleProduct;
@@ -70,6 +75,16 @@ export default {
     this.$store.dispatch("GetSingleProductFromServer", {
       productId: this.$route.params.id   // give from url
     });
+  },
+  methods: {
+    AddProductToOrder(productId) {
+      const orderDetail = {
+        productId: productId,
+        count: this.count
+      };
+      this.$emit('testEvent');
+      this.$store.dispatch("AddProductToOrder", orderDetail);
+    }
   }
 };
 </script>

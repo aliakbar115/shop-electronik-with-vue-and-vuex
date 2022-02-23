@@ -17,7 +17,7 @@ Vue.use(VueCookie);
 
 Vue.http.options.root = "http://localhost:8000/api/";
 Vue.http.interceptors.push((request, next) => { // use JWT   برای لاگین
-  request.headers.set('Authorization', 'Bearer ' + Vue.cookie.get('Eshop_Auth_Token'));
+  request.headers.set('Authorization', 'Bearer ' + Vue.cookie.get('Eshop_Auth_Token'));  // set in header Request for all
   next();
 });
 

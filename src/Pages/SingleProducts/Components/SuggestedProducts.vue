@@ -22,7 +22,7 @@
               </router-link>
             </li>
             <li>
-              <a href="#"> <i class="fa fa-shopping-cart"></i>افزودن به سبد </a>
+              <a href="#" @click.prevent="AddProductToOrder(product.id)"> <i class="fa fa-shopping-cart" ></i>افزودن به سبد </a>
             </li>
           </ul>
         </div>
@@ -44,5 +44,15 @@ export default {
   created() {
     this.$store.dispatch("GetSuggestedProductsFromServer");
   },
+  methods: {
+    AddProductToOrder(productId) {
+      const orderDetail = {
+        productId: productId,
+        count: 1
+      };
+
+      this.$store.dispatch("AddProductToOrder", orderDetail);
+    }
+  }
 };
 </script>

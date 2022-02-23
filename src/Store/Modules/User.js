@@ -51,7 +51,7 @@ const actions = {
   },
   LoginUser(context, loginData) {
     Vue.http.post('Account/Login', loginData).then(response => {
-      console.log(response);
+      //console.log(response);
       if (response.body.result == "NotFound") {
         alert('کاربری با مشخصات وارد شده یافت نشد');
       }
@@ -68,12 +68,20 @@ const actions = {
   },
   CheckForLogin(context) {
     Vue.http.get('Account/CheckAuthentication').then(response => {
-     
+
       if (response.status !== 401 && response.body.status) {
         context.commit("SetUserFullName", response.body.user.name + " " + response.body.user.family);
         context.commit("SetUserAuthenticated", true);
       }
+    }, response => {  // برای خطا
+      if(response.status == 401) {
+        //console.log(response.body.data.message);
+      }
+
+    }, function(error){    // error handle
+      //console.log(error);
     });
+
   },
 
   SignOutUser(context) {
